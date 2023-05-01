@@ -1,6 +1,6 @@
-# Auction App
-<img src="http://img.shields.io/static/v1?label=Development&message=Em%20Desenvolvimento&color=blue&style=for-the-badge"/>
-<img src="http://img.shields.io/static/v1?label=CODE%20REVIEW&message=Não%20Inicializado&color=red&style=for-the-badge"/>
+# Leilão de Estoque
+<img src="http://img.shields.io/static/v1?label=Desenvolvimento&message=Em%20Desenvolvimento&color=blue&style=for-the-badge"/>
+<img src="http://img.shields.io/static/v1?label=Code%20Review&message=Nao%20Inicializado&color=red&style=for-the-badge"/>
 
 ## Sumário
 - [Premissa do Projeto](#premissa-do-projeto)
