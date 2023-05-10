@@ -1,0 +1,27 @@
+.lotsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 2rem auto;
+}
+
+.lotContainer{
+    width: 45%;
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.lotContainerTitle{
+    text-align: center;
+    margin: 0 0 .75rem 0;
+}
+
+.lotsLinksContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    text-align: center;
+}

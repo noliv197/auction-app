@@ -1,0 +1,16 @@
+<section class='lotDescriptionContainer'>
+    <h1 class='lotTitle'><%= Lot.model_name.human(count: 1)%> <%=@lot.code%></h1>
+    <span class='lotDescription'>
+        <%=Lot.human_attribute_name('start_date')%>: <%=I18n.localize(@lot.start_date)%>
+    </span>
+    <span class='lotDescription'>
+        <%=Lot.human_attribute_name('limit_date')%>: <%=I18n.localize(@lot.limit_date)%>
+    </span>
+    <span class='lotDescription'>
+        <%=Lot.human_attribute_name('minimum_bid')%>: <%=@lot.money_format%>
+    </span>
+</section>
+
+<section class='itensContainer'>
+    <h2>Itens do Lote</h2>
+</section>

@@ -1,0 +1,25 @@
+<div class='lotsContainer'>
+    <section id='inProgress' class='lotContainer'>
+        <h2 class='lotContainerTitle'>Lotes em andamento</h2>
+        <%if @in_progress_lot.empty?%>
+            <span>Nenhum lote em progresso</span>
+        <%else%>
+            <div class='lotsLinksContainer'>
+                <%@in_progress_lot.each do |lot|%>
+                    <%=link_to "Lote #{lot.code}", lot%>
+                <%end%>
+            <div>
+        <%end%>
+    </section>
+
+    <section id='future' class='lotContainer'>
+        <h2 class='lotContainerTitle'>Lotes Futuros</h2>
+        <%if @future_lot.empty?%>
+            <span>Nenhum lote futuro</span>
+        <%else%>
+            <%@future_lot.each do |lot|%>
+                <p><%= "Lote #{lot.code}"%></p>
+            <%end%>
+        <%end%>
+    </section>
+</div>

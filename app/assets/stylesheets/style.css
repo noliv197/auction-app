@@ -1,0 +1,27 @@
+body{
+    background-color: #09425c;
+    color: #f0f8ff;
+    margin: 0;
+}
+
+a{
+    color: #d880f3;
+    text-decoration: none;
+}
+
+ul{
+    padding: 0;
+}
+
+li{
+    list-style-type: none
+}
+
+.messageContainer{
+    margin: 1rem auto;
+    width: 80%;
+    padding: .5rem;
+    background-color: #091629;
+    border-radius: 4px;
+    font-weight: 700;
+}

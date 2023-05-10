@@ -1,0 +1,23 @@
+<%=form_with(model: @lot, html:{class:'standartForm'}) do |f|%>
+    <div class='inputContainer'>
+        <%=f.label :code%>
+        <%=f.text_field :code%>
+    </div>
+    <div class='inputContainer'>
+        <%=f.label :start_date%>
+        <%=f.date_field :start_date%>
+    </div>
+    <div class='inputContainer'>
+        <%=f.label :limit_date%>
+        <%=f.date_field :limit_date%>
+    </div>
+    <div class='inputContainer'>
+        <%=f.label :minimum_bid%>
+        <%=f.number_field :minimum_bid%>
+    </div>
+    <div class='inputContainer'>
+        <%=f.label :bids_difference%>
+        <%=f.number_field :bids_difference%>
+    </div>
+    <%=f.submit 'Criar Lote'%>
+<%end%>

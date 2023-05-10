@@ -1,0 +1,12 @@
+<h1 class='formTitle'>Novo Lote</h1>
+<%if @lot.errors.any?%>
+    <div class='errorsContainer'>
+        <span>Verifique os erros abaixo:</span>
+        <ul>
+            <%@lot.errors.full_messages.each do |msg| %>
+                <li><%=msg%></li>
+            <%end%>
+        </ul>
+    </div>
+<%end%>
+<%=render 'form'%>

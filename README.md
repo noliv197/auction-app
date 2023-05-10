@@ -36,6 +36,19 @@ Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servi
 
 ## Funcionalidades
 ## Testes
+### Lotes
+* Modelo
+    - testa se campos estão vazios: 
+        - código
+        - data de inicio
+        - data limite
+        - lance minimo
+        - diferença entre lances
+    - testa se `lance minimo` é maior que 0 e se a `diferença mínima entre lances` é maior que 1
+    - testa se código é único e se ele tem 3 letras e 6 números
+    - testa se data inicio não está no passado
+    - testa se data limite não é anterior a data de inicio
+
 
 ## Configurações
 ### Ferramentas
