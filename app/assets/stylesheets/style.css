@@ -25,3 +25,13 @@ li{
     border-radius: 4px;
     font-weight: 700;
 }
+
+.textTitle{
+    font-size: 2em;
+    margin: 1rem 0;
+}
+
+.textDescription{
+    font-size: 1.2em;
+    margin: .25rem 0;
+}

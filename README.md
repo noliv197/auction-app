@@ -49,6 +49,40 @@ Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servi
     - testa se data inicio não está no passado
     - testa se data limite não é anterior a data de inicio
 
+* Visualização do Usuário
+    - Lotes em andamento e futuros na página inicial
+    - Ao clicar no link de um lote, vê detalhes do lote e itens
+    - Cadastro de um novo lote, fornecendo:
+        - código
+        - data de inicio
+        - data limite
+        - lance mínimo
+        - diferença mínima entre lances
+
+### Modelo de Itens
+* Modelo
+    - testa se campos estão vazios: 
+        - nome
+        - descrição
+        - imagem
+        - peso
+        - altura
+        - largura
+        - profundidade
+        - categoria
+    - testa se `peso` , `altura`, `largura`, `profundidade` é maior que 0
+    - testa se código é único e se não é alterado após mudanças no objeto
+
+* Visualização do Usuário
+    - Cadastro de um novo item
+        - nome
+        - descrição
+        - categoria
+        - imagem
+        - peso
+        - altura
+        - largura
+        - profundidade
 
 ## Configurações
 ### Ferramentas

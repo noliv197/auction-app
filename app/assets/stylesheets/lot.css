@@ -5,13 +5,3 @@
     display: flex;
     flex-direction: column;
 }
-
-.lotTitle{
-    font-size: 2em;
-    margin: 1rem 0;
-}
-
-.lotDescription{
-    font-size: 1.2em;
-    margin: .25rem 0;
-}

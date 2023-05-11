@@ -1,4 +1,5 @@
 class Lot < ApplicationRecord
+    has_many :lot_items
     enum status: {pending: 0, approved: 1, closed: 2, canceled: 3}
 
     validates :code, :start_date, :limit_date, :minimum_bid, :bids_difference,

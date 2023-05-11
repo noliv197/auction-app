@@ -1,0 +1,37 @@
+<%=form_with(model: @item_model, html:{class:'standartForm'}) do |f|%>
+    <div class='inputContainer'>
+        <%=f.label :name%>
+        <%=f.text_field :name%>
+    </div>
+    <div class='inputContainer'>
+        <%=f.label :description%>
+        <%=f.text_field :description%>
+    </div>
+        <div class='inputContainer'>
+        <%=f.label :category%>
+        <%=f.text_field :category%>
+    </div>
+    <div class='inputContainer'>
+        <%=f.label :image%>
+        <%=f.text_field :image%>
+    </div>
+    <div class='inputsGridContainer'>
+        <div class='inputContainer'>
+            <%=f.label :weight%>
+            <%=f.number_field :weight%>
+        </div>
+        <div class='inputContainer'>
+            <%=f.label :length%>
+            <%=f.number_field :length%>
+        </div>
+            <div class='inputContainer'>
+            <%=f.label :width%>
+            <%=f.number_field :width%>
+        </div>
+            <div class='inputContainer'>
+            <%=f.label :depth%>
+            <%=f.number_field :depth%>
+        </div>
+    </div>
+    <%=f.submit 'Criar item'%>
+<%end%>

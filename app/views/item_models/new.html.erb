@@ -1,0 +1,12 @@
+<h1 class='formTitle'>Novo Item</h1>
+<%if @item_model.errors.any?%>
+    <div class='errorsContainer'>
+        <span>Verifique os erros abaixo:</span>
+        <ul>
+            <%@item_model.errors.full_messages.each do |msg| %>
+                <li><%=msg%></li>
+            <%end%>
+        </ul>
+    </div>
+<%end%>
+<%= render 'form'%>
