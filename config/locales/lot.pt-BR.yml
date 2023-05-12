@@ -14,5 +14,5 @@ pt-BR:
         start_date: 'Data de Início'
         limit_date: 'Data Limite'
         minimum_bid: 'Lance Mínimo'
-        bids_difference: 'Diferença Mínima Entre Lotes'
+        bids_difference: 'Diferença Mínima Entre Lances'
         status: 'Situação do Lote'

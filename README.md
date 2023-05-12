@@ -58,7 +58,6 @@ Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servi
         - data limite
         - lance mínimo
         - diferença mínima entre lances
-
 ### Modelo de Itens
 * Modelo
     - testa se campos estão vazios: 
@@ -83,6 +82,32 @@ Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servi
         - altura
         - largura
         - profundidade
+### Usuário
+* Modelo
+    - testa se campos estão vazios:
+        - email
+        - senha
+        - cpf
+    - testa se campos tem um único registro
+        - email
+        - cpf
+    - testa se `senha` tem no mínimo 6 caracteres
+    - testa se `cpf` é considerado válido
+
+* Visualização do Usuário
+    - Cadastro de novo usuário
+        - email
+        - senha
+        - cpf
+    - Login de cliente
+        - vê lotes disponiveis
+        - pode fazer lance
+        - vê resultados de lotes que fizeram lances
+    - Login de administrador
+        - vê e tem permissão para criar lotes
+        - vê e tem permissão para criar itens
+        - aprova lote
+        - adiciona/remove itens de um lote
 
 ## Configurações
 ### Ferramentas

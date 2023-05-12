@@ -1,10 +1,24 @@
 require 'rails_helper'
 
 describe 'Administrador registra novo modelo de item' do
+    it 'mas não está autenticado' do
+        visit new_item_model_path
+
+        expect(current_path).to eq new_user_session_path
+    end
+    it 'mas está com credencial errada' do
+        client = User.create!(email:'natalia@email.com.br', password:'12345678', registration_number: '87691734000')
+        
+        login_as client
+        visit new_item_model_path
+
+        expect(current_path).to eq root_path
+    end
     it 'com sucesso' do
-        # autenticar
+        admin = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '87691734000')
         allow(SecureRandom).to receive(:alphanumeric).and_return('ASE54D6D8D')
 
+        login_as admin
         visit root_path
         click_on 'Criar novo item'
         fill_in 'Nome', with: 'Vestido'
@@ -26,7 +40,9 @@ describe 'Administrador registra novo modelo de item' do
         expect(page).to have_content("Dimensões: 3cm x 2cm x 1cm")
     end
     it 'com fracasso' do
-        # autenticar
+        admin = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '87691734000')
+
+        login_as admin
         visit root_path
         click_on 'Criar novo item'
         fill_in 'Nome', with: ''

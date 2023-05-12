@@ -1,0 +1,14 @@
+pt-BR:
+  client: 'Cliente'
+  admin: 'Administrador'
+  activerecord:
+    models:
+      user:
+        one: 'Usuário'
+        other: 'Usuários'
+    attributes:
+      user: 
+        email: 'Email'
+        password: 'Senha'
+        registration_number: 'CPF'
+        credentials: 'Credenciais'

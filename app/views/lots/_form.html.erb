@@ -11,13 +11,15 @@
         <%=f.label :limit_date%>
         <%=f.date_field :limit_date%>
     </div>
-    <div class='inputContainer'>
-        <%=f.label :minimum_bid%>
-        <%=f.number_field :minimum_bid%>
-    </div>
-    <div class='inputContainer'>
-        <%=f.label :bids_difference%>
-        <%=f.number_field :bids_difference%>
+    <div class='inputsGridContainer'>
+        <div class='inputContainer'>
+            <%=f.label :minimum_bid%>
+            <%=f.number_field :minimum_bid%>
+        </div>
+        <div class='inputContainer'>
+            <%=f.label :bids_difference%>
+            <%=f.number_field :bids_difference%>
+        </div>
     </div>
     <%=f.submit 'Criar Lote'%>
 <%end%>

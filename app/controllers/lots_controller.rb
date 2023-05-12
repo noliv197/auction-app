@@ -1,4 +1,6 @@
 class LotsController < ApplicationController
+    before_action :authenticate_user!, only:[:new]
+    before_action :check_credentials, only:[:new,:create]
     def show
         @lot = Lot.find(params[:id])
     end
@@ -16,6 +18,13 @@ class LotsController < ApplicationController
         else
             flash.now[:notice] = 'Não foi possível cadastrar o lote'
             render :new, status: 422
+        end
+    end
+
+    private
+    def check_credentials
+        if current_user.client?
+            return redirect_to root_path, notice: 'Você não tem permissão para executar essa ação'
         end
     end
 end

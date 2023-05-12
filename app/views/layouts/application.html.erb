@@ -11,11 +11,25 @@
 
   <body>
     <header>
-      <nav>
-        <%= link_to 'Home', root_path%>
-        <%# só para admins %>
-        <%= link_to 'Criar novo lote', new_lot_path%> 
-        <%= link_to 'Criar novo item', new_item_model_path%>
+      <nav class='menu'>
+        <div>
+          <%= link_to 'Home', root_path%>
+          <%if user_signed_in? && current_user.admin?%>
+            <%= link_to 'Criar novo lote', new_lot_path%> 
+            <%= link_to 'Criar novo item', new_item_model_path%>
+            <%= link_to 'Aprovar lotes', new_item_model_path%>
+          <%end%>
+          <%if user_signed_in? && current_user.client?%>
+            <%= link_to 'Ver resultados', new_lot_path%> 
+          <%end%>
+        </div>
+        <div class='menuContainer'>
+          <% if user_signed_in?%>
+            <%= button_to 'Sair', destroy_user_session_path, method: :delete%>
+          <%else%>
+            <%= link_to 'Entrar', new_user_session_path%>
+          <%end%>
+        </div>
       </nav>
     </header>
     <main>
