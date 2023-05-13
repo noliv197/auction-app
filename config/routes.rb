@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
-  resources :lots, only:[:show,:new,:create]
+  resources :lots, only:[:show,:new,:create] do
+    get 'pending', on: :collection
+    post 'approved', on: :member
+  end
   resources :item_models, only:[:show,:new,:create]
 end

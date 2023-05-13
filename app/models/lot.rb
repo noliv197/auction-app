@@ -1,4 +1,7 @@
 class Lot < ApplicationRecord
+    belongs_to :created_by, :class_name => "User"
+    belongs_to :approved_by, :class_name => "User" , required: false
+
     has_many :lot_items
     enum status: {pending: 0, approved: 1, closed: 2, canceled: 3}
 

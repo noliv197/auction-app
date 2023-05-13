@@ -2,13 +2,14 @@ require 'rails_helper'
 
 describe 'Usuário vê lotes disponiveis' do 
     it 'na tela de inicio' do
+        admin = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '87691734000')
         first_lot = Lot.create!(
             code:'ABC123456',start_date: Date.today, limit_date: 3.days.from_now,
-            minimum_bid: 5, bids_difference: 10, status: 'approved'
+            minimum_bid: 5, bids_difference: 10, status: 'approved',created_by:admin
         ) 
         second_lot = Lot.create!(
             code:'DEF123456',start_date: 1.day.from_now,limit_date: 3.days.from_now,
-            minimum_bid: 5, bids_difference: 10, status: 'approved'
+            minimum_bid: 5, bids_difference: 10, status: 'approved', created_by:admin
         ) 
 
         visit root_path
@@ -23,13 +24,14 @@ describe 'Usuário vê lotes disponiveis' do
     it 'e seus detalhes' do
         formatted_star_date = I18n.localize(Date.today)
         formatted_limit_date = I18n.localize(3.days.from_now.to_date)
+        admin = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '87691734000')
         first_lot = Lot.create!(
             code:'ABC123456',start_date: formatted_star_date, limit_date: formatted_limit_date,
-            minimum_bid: 5, bids_difference: 10, status: 'approved'
+            minimum_bid: 5, bids_difference: 10, status: 'approved',created_by:admin
         ) 
         second_lot = Lot.create!(
             code:'DEF123456',start_date: formatted_star_date,limit_date: formatted_limit_date,
-            minimum_bid: 5, bids_difference: 10, status: 'approved'
+            minimum_bid: 5, bids_difference: 10, status: 'approved',created_by:admin
         ) 
 
         visit root_path
