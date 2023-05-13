@@ -17,7 +17,7 @@
           <%if user_signed_in? && current_user.admin?%>
             <%= link_to 'Criar novo lote', new_lot_path%> 
             <%= link_to 'Criar novo item', new_item_model_path%>
-            <%= link_to 'Aprovar lotes', new_item_model_path%>
+            <%= link_to 'Aprovar lotes', pending_lots_path%>
           <%end%>
           <%if user_signed_in? && current_user.client?%>
             <%= link_to 'Ver resultados', new_lot_path%> 

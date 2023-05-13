@@ -16,3 +16,5 @@ pt-BR:
         minimum_bid: 'Lance Mínimo'
         bids_difference: 'Diferença Mínima Entre Lances'
         status: 'Situação do Lote'
+        created_by_id: 'Criado por'
+        approved_by_id: 'Aprovado por'

@@ -1,0 +1,29 @@
+<h1 class='textTitle'>Lotes Aguardando Aprovação</h1>
+<section class='pendingLotsContainer'>
+    <%if @lots.empty?%>
+        <span>Nenhum lote aguardando aprovação<span>
+    <%else%>
+        <%@lots.each do |lot|%>
+            <%=tag.div id: lot.code, :class => 'pendingLotContainer' do%>
+                <h2><%= Lot.model_name.human(count: 1)%> <%=lot.code%></h2>
+                <%= button_to 'Aprovar', approved_lot_path(lot)%>
+                <span class='textDescription'>
+                    <%=Lot.human_attribute_name('start_date')%>: <%=I18n.localize(lot.start_date)%>
+                </span>
+                <span class='textDescription'>
+                    <%=Lot.human_attribute_name('limit_date')%>: <%=I18n.localize(lot.limit_date)%>
+                </span>
+                <span class='textDescription'>
+                    <%=Lot.human_attribute_name('minimum_bid')%>: <%=lot.money_format%>
+                </span>
+                <span class='textDescription'>
+                    <%=Lot.human_attribute_name('bids_difference')%>: <%=lot.bids_difference%>
+                </span>
+                <span class='textDescription'>
+                    <%=Lot.human_attribute_name('created_by_id')%>: <%=lot.created_by.email%>
+                </span>
+                <h2>Itens</h2>
+            <%end%>
+        <%end%>
+    <%end%>
+</section>
