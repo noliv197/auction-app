@@ -7,8 +7,20 @@
         <%=Lot.human_attribute_name('limit_date')%>: <%=I18n.localize(@lot.limit_date)%>
     </span>
     <span class='textDescription'>
-        <%=Lot.human_attribute_name('minimum_bid')%>: <%=@lot.money_format%>
+        <%=Lot.human_attribute_name('minimum_bid')%>: <%=@lot.money_format(@lot.minimum_bid)%>
     </span>
+    <%if !@lot.last_bid.nil?%>
+        <span class='textDescription'>
+            <%=Lot.human_attribute_name('last_bid')%>: <%=@lot.money_format(@lot.last_bid)%>
+        </span>
+    <%end%>
+    <%if user_signed_in? && current_user.client?%>
+        <%=form_with(model: [@lot,Bid.new], url: lot_bids_path(@lot), method:"post", html:{class:'shortForm'}) do |f|%>
+            <%= f.label :value%>
+            <%= f.number_field :value%>
+            <%= f.submit 'Confirmar'%>
+        <%end%>
+    <%end%>
 </section>
 
 <section class='itensContainer'>

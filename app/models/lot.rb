@@ -2,7 +2,7 @@ class Lot < ApplicationRecord
     belongs_to :created_by, :class_name => "User"
     belongs_to :approved_by, :class_name => "User" , required: false
 
-    has_many :lot_items
+    has_many :bids
     enum status: {pending: 0, approved: 1, closed: 2, canceled: 3}
 
     validates :code, :start_date, :limit_date, :minimum_bid, :bids_difference,
@@ -14,9 +14,10 @@ class Lot < ApplicationRecord
     validates :code, uniqueness: true
     validate :verify_code
 
-    def money_format
-        "R$ #{minimum_bid},00"
+    def money_format(number)
+        "R$ #{number},00"
     end
+    
     private
 
     def verify_code

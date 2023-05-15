@@ -14,7 +14,7 @@
                     <%=Lot.human_attribute_name('limit_date')%>: <%=I18n.localize(lot.limit_date)%>
                 </span>
                 <span class='textDescription'>
-                    <%=Lot.human_attribute_name('minimum_bid')%>: <%=lot.money_format%>
+                    <%=Lot.human_attribute_name('minimum_bid')%>: <%=lot.money_format(lot.minimum_bid)%>
                 </span>
                 <span class='textDescription'>
                     <%=Lot.human_attribute_name('bids_difference')%>: <%=lot.bids_difference%>

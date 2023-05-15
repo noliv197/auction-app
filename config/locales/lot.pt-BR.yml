@@ -18,3 +18,4 @@ pt-BR:
         status: 'Situação do Lote'
         created_by_id: 'Criado por'
         approved_by_id: 'Aprovado por'
+        last_bid: 'Último Lance'

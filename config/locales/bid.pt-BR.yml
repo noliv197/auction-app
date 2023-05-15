@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      bid:
+        one: 'Lance'
+        other: 'Lances'
+    attributes:
+      bid: 
+        user_id: 'Usuário'
+        lot_id: 'Lote'
+        value: 'Lance'
