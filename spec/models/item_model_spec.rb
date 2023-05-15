@@ -5,7 +5,7 @@ RSpec.describe ItemModel, type: :model do
         context 'com campo vazio:' do
             it 'nome' do
                 item_model = ItemModel.new(
-                    name:'',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'',description:'Ferrari vermelha',
                     weight: 700, length: 450,width:50,depth:15,category:'automóveis'
                 )
 
@@ -13,15 +13,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'descrição' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'',image:'no_image_available.jpg',
-                    weight: 700, length: 450,width:50,depth:15,category:'automóveis'
-                )
-
-                expect(item_model.valid?).to eq false
-            end
-            it 'imagem' do
-                item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'',
+                    name:'Carro',description:'',
                     weight: 700, length: 450,width:50,depth:15,category:'automóveis'
                 )
 
@@ -29,7 +21,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'peso' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: '', length: 450,width:50,depth:15,category:'automóveis'
                 )
 
@@ -37,7 +29,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'altura' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: 700, length: '',width:50,depth:15,category:'automóveis'
                 )
 
@@ -45,7 +37,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'largura' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: 700, length: 450,width:'',depth:15,category:'automóveis'
                 )
 
@@ -53,7 +45,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'profundidade' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: 700, length: 450,width:50,depth:'',category:'automóveis'
                 )
 
@@ -61,7 +53,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'categoria' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: 700, length: 450,width:50,depth:15,category:''
                 )
 
@@ -71,11 +63,11 @@ RSpec.describe ItemModel, type: :model do
         context 'regra específica:' do
             it 'código é único' do
                 first_model = ItemModel.create!(
-                    name:'Mochila',description:"Cor preta; À prova d'água",image:'no_image_available.jpg',
+                    name:'Mochila',description:"Cor preta; À prova d'água",
                     weight: 10, length: 20,width:5,depth:30,category:'bolsas'
                 )
                 second_model = ItemModel.create!(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: 700, length: 450,width:50,depth:15,category:'automóveis'
                 )
 
@@ -83,7 +75,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'código não pode ser modificado único' do
                 item_model = ItemModel.create!(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: 700, length: 450,width:50,depth:15,category:'automóveis'
                 )
                 original_code = item_model.code
@@ -93,7 +85,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'peso maior que 0' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: -1, length: 450,width:50,depth:15,category:'automóveis'
                 )
 
@@ -101,7 +93,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'altura maior que 0' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: 700, length: -1,width:50,depth:15,category:'automóveis'
                 )
 
@@ -109,7 +101,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'comprimento maior que 0' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: 700, length: 450,width:-1,depth:15,category:'automóveis'
                 )
 
@@ -117,7 +109,7 @@ RSpec.describe ItemModel, type: :model do
             end
             it 'profundidade maior que 0' do
                 item_model = ItemModel.new(
-                    name:'Carro',description:'Ferrari vermelha',image:'no_image_available.jpg',
+                    name:'Carro',description:'Ferrari vermelha',
                     weight: 700, length: 450,width:50,depth:-1,category:'automóveis'
                 )
 

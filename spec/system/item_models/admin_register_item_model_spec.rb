@@ -23,7 +23,7 @@ describe 'Administrador registra novo modelo de item' do
         click_on 'Criar novo item'
         fill_in 'Nome', with: 'Vestido'
         fill_in 'Descrição', with: 'preto, tamanho M'
-        fill_in 'Imagem', with: 'no_image_available.jpg'
+        attach_file 'Imagem', Rails.root.join('spec/support/img/no_image_available.jpg')
         fill_in 'Peso', with: 5
         fill_in 'Altura', with: 3
         fill_in 'Largura', with: 2
@@ -38,6 +38,7 @@ describe 'Administrador registra novo modelo de item' do
         expect(page).to have_content("Descrição: preto, tamanho M")
         expect(page).to have_content("Peso: 5g")
         expect(page).to have_content("Dimensões: 3cm x 2cm x 1cm")
+        expect(page).to have_css("img[src*='no_image_available']")
     end
     it 'com fracasso' do
         admin = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '87691734000')
@@ -47,7 +48,7 @@ describe 'Administrador registra novo modelo de item' do
         click_on 'Criar novo item'
         fill_in 'Nome', with: ''
         fill_in 'Descrição', with: 'preto, tamanho M'
-        fill_in 'Imagem', with: 'no_image_available.jpg'
+        attach_file 'Imagem', Rails.root.join('spec/support/img/no_image_available.jpg')
         fill_in 'Peso', with: -1
         fill_in 'Altura', with: 3
         fill_in 'Largura', with: 2
