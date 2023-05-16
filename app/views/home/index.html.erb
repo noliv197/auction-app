@@ -17,9 +17,11 @@
         <%if @future_lot.empty?%>
             <span>Nenhum lote futuro</span>
         <%else%>
-            <%@future_lot.each do |lot|%>
-                <p><%= "Lote #{lot.code}"%></p>
-            <%end%>
+            <div class='lotsLinksContainer'>
+                <%@future_lot.each do |lot|%>
+                    <p><%= "Lote #{lot.code}"%></p>
+                <%end%>
+            </div>
         <%end%>
     </section>
 </div>

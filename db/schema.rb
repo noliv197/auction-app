@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_15_033351) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_173316) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -60,6 +60,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_033351) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+  end
+
+  create_table "lot_items", force: :cascade do |t|
+    t.integer "lot_id", null: false
+    t.integer "item_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_model_id"], name: "index_lot_items_on_item_model_id"
+    t.index ["lot_id"], name: "index_lot_items_on_lot_id"
   end
 
   create_table "lots", force: :cascade do |t|
@@ -94,4 +104,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_033351) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bids", "lots"
   add_foreign_key "bids", "users"
+  add_foreign_key "lot_items", "item_models"
+  add_foreign_key "lot_items", "lots"
 end

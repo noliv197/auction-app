@@ -43,6 +43,11 @@ describe 'Administrador aprova lote' do
             code:'DEF123456',start_date: 1.day.from_now,limit_date: 3.days.from_now,
             minimum_bid: 5, bids_difference: 10, status: 'pending', created_by: creator_admin
         ) 
+        item = ItemModel.create!(
+            name:'Mochila',description:"Cor preta; À prova d'água",
+            weight: 10, length: 20,width:5,depth:30,category:'bolsas'
+        )
+        lot_item = LotItem.create!(lot: first_lot, item_model: item)
         
         login_as approver_admin
         visit root_path

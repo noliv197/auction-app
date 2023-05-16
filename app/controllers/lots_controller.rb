@@ -13,15 +13,16 @@ class LotsController < ApplicationController
     def approved
         @lots = Lot.pending
         @lot = Lot.find(params[:id])
-        # check if there is at least one item
-        if @lot.created_by != current_user
-            @lot.approved!
-            @lot.approved_by = current_user
-            # change item status to unavailable
-            flash.now[:notice] = 'Lote Aprovado com Sucesso'
+        if @lot.created_by == current_user
+            flash.now[:notice] = 'Outro administrador precisa executar essa ação'
+            render :pending
+        elsif @lot.item_models.empty?
+            flash.now[:notice] = 'Lote precisa de pelo menos 1 item'
             render :pending
         else    
-            flash.now[:notice] = 'Outro administrador precisa executar essa ação'
+            @lot.approved!
+            @lot.approved_by = current_user
+            flash.now[:notice] = 'Lote Aprovado com Sucesso'
             render :pending
         end
         

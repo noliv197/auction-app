@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+.menuLinksContainer a:not(:first-child){
+    margin: 0 .5rem;
+}
+
 .menuContainer button,
 .menuContainer a {
     background-color: #091629;

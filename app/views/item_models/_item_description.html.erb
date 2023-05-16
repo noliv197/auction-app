@@ -1,0 +1,17 @@
+<div class='descriptionContainer'>
+        <span class='textDescription'>
+            <%=ItemModel.human_attribute_name('name')%>: <%=@item_model.name%>
+        </span>
+        <span class='textDescription'>
+            <%=ItemModel.human_attribute_name('category')%>: <%=@item_model.category%>
+        </span>
+        <span class='textDescription'>
+            <%=ItemModel.human_attribute_name('weight')%>: <%=@item_model.weight%>g
+        </span>
+        <span class='textDescription'>
+            <%=I18n.translate(:dimension)%>: <%=@item_model.dimension%>
+        </span>
+        <span class='textDescription'>
+            <%=ItemModel.human_attribute_name('description')%>: <%=@item_model.description%>
+        </span>
+</div>

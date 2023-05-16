@@ -67,6 +67,22 @@ form input[type="submit"]{
     margin: 1rem auto;
 }
 
+.shortForm{
+    text-align: center;
+}
+
+.shortForm .inputContainer{
+    align-items: center;
+}
+
+.shortForm select{
+    padding: .5rem;
+    border: 1px solid #a39d9d;
+    border-radius: 4px;
+    width: 30%;
+    box-sizing: border-box;
+}
+
 .shortForm input[type='submit']{
     width: 10%;
     font-size: 1em;

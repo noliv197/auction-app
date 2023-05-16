@@ -1,0 +1,49 @@
+<h1 class='textTitle'>Novo item para o lote <%=@lot.code%></h1>
+
+<%if @items.empty?%>
+    <%=link_to 'Voltar', @lot%>
+    <span>Nenhum Item Disponivel</span>
+<%else%>
+    <%=form_with(model: [@lot, @lot_item], html:{class:'shortForm'}) do |f|%>
+        <div class='inputContainer'>
+            <%=f.label :item_model_id%>
+            <%=f.collection_select :item_model_id,@items,:id, :name_format%>
+        </div>
+        <%=f.submit 'Adicionar'%>
+    <%end%>
+
+    <h2 class='textTitle'>Itens Disponíveis</h2>
+    <section class='itemsContainer'>
+            <%@items.each do |item|%>
+                <div class='itemDescriptionContainer'>
+                    <div>
+                        <span class='textDescription'>
+                            <%=ItemModel.human_attribute_name('code')%>: <%=item.code%>
+                        </span>
+                        <%if item.image.attached?%>
+                            <%=image_tag item.image, alt: item.name%>
+                        <%else%>
+                            <%=image_tag "no_image_available.jpg", alt: 'Nenhuma imagem fornecida'%>
+                        <%end%>
+                    </div>
+                    <div class='descriptionContainer'>
+                        <span class='textDescription'>
+                            <%=ItemModel.human_attribute_name('name')%>: <%=item.name%>
+                        </span>
+                        <span class='textDescription'>
+                            <%=ItemModel.human_attribute_name('category')%>: <%=item.category%>
+                        </span>
+                        <span class='textDescription'>
+                            <%=ItemModel.human_attribute_name('weight')%>: <%=item.weight%>g
+                        </span>
+                        <span class='textDescription'>
+                            <%=I18n.translate(:dimension)%>: <%=item.dimension%>
+                        </span>
+                        <span class='textDescription'>
+                            <%=ItemModel.human_attribute_name('description')%>: <%=item.description%>
+                        </span>
+                    </div>
+                </div>
+            <%end%>
+    </section>
+<%end%>
