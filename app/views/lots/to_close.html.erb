@@ -1,0 +1,33 @@
+<div class='lotsContainer'>
+    <section id='toClose' class='lotContainer'>
+        <h2 class='lotContainerTitle'>Lotes para Encerrar</h2>
+        <%if @to_close_lots.empty?%>
+            <span>Nenhum lote para encerrar</span>
+        <%else%>
+            <div class='lotsLinksContainer'>
+                <%@to_close_lots.each do |lot|%>
+                    <%=tag.div id: lot.code do%>
+                        <p><%= "Lote #{lot.code}"%></p>
+                        <%=button_to "Encerrar", closed_lot_path(lot)%>
+                    <%end%>
+                <%end%>
+            <div>
+        <%end%>
+    </section>
+
+    <section id='toCancel' class='lotContainer'>
+        <h2 class='lotContainerTitle'>Lotes para Cancelar</h2>
+        <%if @to_cancel_lots.empty?%>
+            <span>Nenhum lote para cancelar</span>
+        <%else%>
+            <div class='lotsLinksContainer'>
+                <%@to_cancel_lots.each do |lot|%>
+                    <%=tag.div id: lot.code do%>
+                        <p><%= "Lote #{lot.code}"%></p>
+                        <%=button_to "Cancelar", canceled_lot_path(lot)%>
+                    <%end%>
+                <%end%>
+            </div>
+        <%end%>
+    </section>
+</div>
