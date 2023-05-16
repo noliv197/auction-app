@@ -29,7 +29,7 @@ describe 'Administrador registra novo modelo de item' do
         fill_in 'Largura', with: 2
         fill_in 'Profundidade', with: 1
         fill_in 'Categoria', with: 'Roupas'
-        click_on 'Criar item'
+        click_on 'Salvar'
 
         expect(page).to have_content('Item criado com sucesso!')
         expect(page).to have_content('Código: ASE54D6D8D')
@@ -54,7 +54,7 @@ describe 'Administrador registra novo modelo de item' do
         fill_in 'Largura', with: 2
         fill_in 'Profundidade', with: 1
         fill_in 'Categoria', with: 'Roupas'
-        click_on 'Criar item'
+        click_on 'Salvar'
 
         expect(page).to have_content('Não foi possível cadastrar o item')
         expect(page).to have_content('Verifique os erros abaixo:')

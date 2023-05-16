@@ -1,4 +1,7 @@
 <h1 class='textTitle'><%= Lot.model_name.human(count: 1)%> <%=@lot.code%></h1>
+<%if user_signed_in? && current_user.admin? && @lot.pending?%>
+    <%= link_to 'Editar lote', edit_lot_path(@lot)%>
+<%end%>
 <span class='textDescription'>
     <%=Lot.human_attribute_name('start_date')%>: <%=I18n.localize(@lot.start_date)%>
 </span>

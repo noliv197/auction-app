@@ -1,6 +1,6 @@
 class LotsController < ApplicationController
-    before_action :authenticate_user!, only:[:new,:pending]
-    before_action :check_credentials, only:[:new,:create,:pending,:approved]
+    before_action :authenticate_user!, only:[:new,:pending,:edit,:create]
+    before_action :check_credentials, only:[:new,:create,:pending,:approved,:edit,:create]
     def show
         @lot = Lot.find(params[:id])
     end
@@ -25,13 +25,8 @@ class LotsController < ApplicationController
             flash.now[:notice] = 'Lote Aprovado com Sucesso'
             render :pending
         end
-        
     end
     def create
-        lot_params = params.require(:lot).permit(
-            :code,:start_date,:limit_date,
-            :minimum_bid,:bids_difference
-        )
         @lot = Lot.new(lot_params)
         @lot.created_by = current_user
         if @lot.save
@@ -41,11 +36,34 @@ class LotsController < ApplicationController
             render :new, status: 422
         end
     end
+    def edit
+        @lot = Lot.find(params[:id])
+        if !@lot.pending?
+            return redirect_to @lot, notice: 'Lote não pode mais ser editado'
+        end
+    end
+    def update
+        @lot = Lot.find(params[:id])
+        if !@lot.pending?
+            return redirect_to @lot, notice: 'Lote não pode mais ser editado'
+        elsif @lot.update(lot_params)
+            return redirect_to @lot, notice: 'Lote atualizado com sucesso'
+        else
+            flash.now[:notice] = 'Não foi possivel salvar as alterações'
+            render :edit, status: 422
+        end
+    end
 
     private
     def check_credentials
         if current_user.client?
             return redirect_to root_path, notice: 'Você não tem permissão para executar essa ação'
         end
+    end
+    def lot_params
+        params.require(:lot).permit(
+            :code,:start_date,:limit_date,:image,
+            :minimum_bid,:bids_difference
+        )
     end
 end

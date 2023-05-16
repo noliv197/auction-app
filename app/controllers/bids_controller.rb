@@ -11,7 +11,7 @@ class BidsController < ApplicationController
             @lot.update(last_bid: @bid.value)
             return redirect_to @lot, notice: 'Lance feito com sucesso'
         else
-            return redirect_to @lot, notice: 'Não foi possível completar seu lance'
+            return redirect_to @lot, notice: @bid.errors.full_messages[0]
         end
     end
 end

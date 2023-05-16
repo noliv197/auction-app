@@ -3,8 +3,10 @@ class Bid < ApplicationRecord
   belongs_to :lot
 
   validates :value, presence: true
-  validate :check_value
   validate :verify_credentials
+  validate :check_client
+  validate :check_value
+  validate :check_bid_difference
 
   private
   def verify_credentials
@@ -12,18 +14,19 @@ class Bid < ApplicationRecord
       self.errors.add(:user_id, "não pode ser administrador")
     end
   end
-  def check_value
-    if self.value.present? && self.value < self.lot.minimum_bid
-      self.errors.add(:value," valor tem que ser maior ou igual ao lance mínimo do lote")
+  def check_client
+    if self.lot.last_bid.present? && self.user == self.lot.bids.last.user
+      self.errors.add(:user_id,"tem que aguardar próximo lance")
     end
   end
-  
+  def check_value
+    if self.value.present? && self.value < self.lot.minimum_bid
+      self.errors.add(:value,"tem que ser maior ou igual ao lance mínimo do lote")
+    end
+  end
   def check_bid_difference
-    # if self.lot.last_bid.present? && self.last_bid
-    #   self.errors.add(:value," é menor que diferença entre lances")
-    # end
-    #checar ultimo lance
-    #if bids.empty? value >= minimum_bid
-    #else get last bid and compare bid_difference
+    if self.value.present? && self.value > self.lot.minimum_bid && self.lot.last_bid.present? && self.value < (self.lot.last_bid + self.lot.bids_difference)
+      self.errors.add(:value,"é menor que diferença entre lances")
+    end
   end
 end

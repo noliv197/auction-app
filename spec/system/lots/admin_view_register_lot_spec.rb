@@ -27,7 +27,7 @@ describe 'Administrador registra novo lote' do
         fill_in 'Data Limite', with: formatted_limit_date
         fill_in 'Lance Mínimo', with: 5
         fill_in 'Diferença Mínima Entre Lances', with: 2
-        click_on 'Criar Lote'
+        click_on 'Salvar'
 
         expect(page).to have_content('Lote criado com sucesso!')
         expect(page).to have_content('Lote ABC123456')
@@ -48,7 +48,7 @@ describe 'Administrador registra novo lote' do
         fill_in 'Data Limite', with: formatted_limit_date
         fill_in 'Lance Mínimo', with: 0
         fill_in 'Diferença Mínima Entre Lances', with: 2
-        click_on 'Criar Lote'
+        click_on 'Salvar'
 
         expect(page).to have_content('Não foi possível cadastrar o lote')
         expect(page).to have_content('Verifique os erros abaixo:')

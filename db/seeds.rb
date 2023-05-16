@@ -1,4 +1,4 @@
-first_admin = User.create!(email:'visitor@leilaodogalpao.com.br', password:'12345678', registration_number: '87691734000')
+first_admin = User.create!(email:'creator@leilaodogalpao.com.br', password:'12345678', registration_number: '87691734000')
 second_admin = User.create!(email:'admin@leilaodogalpao.com.br', password:'12345678', registration_number: '36767455075')
 client = User.create!(email:'client@email.com.br', password:'12345678', registration_number: '14538220620')
 

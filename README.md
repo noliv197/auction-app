@@ -3,36 +3,17 @@
 <img src="http://img.shields.io/static/v1?label=Code%20Review&message=Nao%20Inicializado&color=red&style=for-the-badge"/>
 
 ## Sumário
-- [Premissa do Projeto](#premissa-do-projeto)
+1. [Premissa do Projeto](#premissa-do-projeto)
 
-- [Usuários](#usuários)
+2. [Funcionalidades](#funcionalidades)
 
-- [Funcionalidades](#funcionalidades)
+3. [Testes](#testes)
 
-- [Testes](#testes)
-
-- [Configurações](#configurações)
+4. [Configurações](#configurações)
 
 ## Premissa do Projeto
 Após o [Sistema de Galpões](https://github.com/noliv197/warehouse-app), o cliente agora quer tratar de um novo problema: em todos os galpões existem itens que já saíram de linha ou possuem pequenos defeitos e que, por isso, não podem mais ser comercializados nas redes de varejo e outros estabelecimentos.
 Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servirá para conectar o público em geral com o estoque de itens abandonados, permitindo que estes itens sejam comercializados com preços atrativos e que, ao mesmo tempo, os galpões tenham seus espaços melhor aproveitados. O formato escolhido pelo nosso cliente é o de leilão de itens.
-
-## Usuários
-### Administrador
-* Responsabilidades
-    1. Cadastro de produtos que estão disponíveis para venda;
-    2. Gestão do leilão incluindo a configuração de:
-        * lotes;
-        * datas;
-        * lances minimos;
-    3. Acompanhar os eventuais pedidos recebidos
-
-### Visitante
-* Permissões
-    1. Poderão criar uma conta na plataforma;
-    2. Buscar por produtos; 
-    3. Ver detalhes de produtos; 
-    4. Fazer uma oferta caso ainda seja possível
 
 ## Funcionalidades
 ## Testes
@@ -110,10 +91,40 @@ Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servi
         - adiciona/remove itens de um lote
 
 ## Configurações
+### Como Rodar a Aplicação
+0. Verifique se o ruby e rails estão instalados na sua máquina
+1. Primerio faça o clone do repositório na sua máquina
+    
+    ```
+    git clone https://github.com/noliv197/auction-app.git 
+    ```
+2. Rode o comando a baixo para baixar todos as gems usadas na aplicação
+    
+    ```
+    bundle install
+    ```
+3. Para configurar o banco de dados inicial rode o comando
+    
+    ```
+    rails db:seed
+    ``` 
+4. Rode o comando abaixo para subir a aplicação no modo de desenvolvimento
+   
+    ```
+    rails server
+    ```
+5. Existem três usuários previamente cadastrados para facilitar a navegação
+    * `creator@leilaodogalpao.com.br` é uma conta de administrador que fez os cadastros de lotes que já estão cadastrados no sistema;
+    * `admin@leilaodogalpao.com.br` é outra conta de administrador para testes de aprovação de lotes;
+    * `client@email.com.br` é uma conta de cliente que pode fazer lances;
+    * A senha de todas as contas é `12345678`;
+
 ### Ferramentas
 * Ruby -> versão 3.0.2 
 * Rails -> versão 7.0.4 
 ### Gems
+* Sqlite -> banco de dados
 * Rspec -> para testes
 * Capybara -> para testes
 * Devise -> para autenticação
+* ActiveStorage -> para armazenamento e anexo de imagens

@@ -23,7 +23,7 @@
         <%=tag.div id: item.code, :class => 'itemDescriptionContainer' do%>
             <div>
                 <span class='textDescription'>
-                    <%=ItemModel.human_attribute_name('code')%>: <%=item.code%>
+                    <%=ItemModel.human_attribute_name('code')%>: <%=link_to item.code, item%>
                 </span>
                 <%if @lot.pending?%>
                     <%= button_to 'Excluir', lot_lot_item_path(@lot,item), method:"delete"%>
