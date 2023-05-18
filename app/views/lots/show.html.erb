@@ -9,14 +9,14 @@
         <%=form_with(model: [@lot,Bid.new], url: lot_bids_path(@lot), method:"post", html:{class:'shortForm'}) do |f|%>
             <%= f.label :value%>
             <%= f.number_field :value%>
-            <%= f.submit 'Confirmar', :class => 'btnSubmit'%>
+            <%= f.submit I18n.translate('buttons.confirm'), :class => 'btnSubmit'%>
         <%end%>
     <%end%>
 </section>
 
-<h2 class='textTitle'>Itens do Lote</h2>
+<h2 class='textTitle'><%=I18n.translate('title.lot_items')%></h2>
 <%if user_signed_in? && current_user.admin? && @lot.pending?%>
-    <%=link_to 'Adicionar Item', new_lot_lot_item_path(@lot), :class => 'btn btnCentered'%>
+    <%=link_to I18n.translate('links.add_item'), new_lot_lot_item_path(@lot), :class => 'btn btnCentered'%>
 <%end%>
 <section class='itemsContainer'>
    <%@lot.item_models.each do |item|%>
@@ -26,12 +26,12 @@
                     <%=ItemModel.human_attribute_name('code')%>: <%=link_to item.code, item%>
                 </span>
                 <%if @lot.pending?%>
-                    <%= button_to 'Excluir', lot_lot_item_path(@lot,item), method:"delete", :class => 'btn'%>
+                    <%= button_to I18n.translate('buttons.delete'), lot_lot_item_path(@lot,item), method:"delete", :class => 'btn'%>
                 <%end%>
                 <%if item.image.attached?%>
                     <%=image_tag item.image, alt: item.name%>
                 <%else%>
-                    <%=image_tag "no_image_available.jpg", alt: 'Nenhuma imagem fornecida'%>
+                    <%=image_tag "no_image_available.jpg", alt: I18n.translate('alt.no_image')%>
                 <%end%>
             </div>
             <div class='descriptionContainer'>

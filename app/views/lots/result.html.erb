@@ -1,15 +1,15 @@
-<h1 class='textTitle'>Lotes Vencidos</h1>
+<h1 class='textTitle'><%=I18n.translate('title.winner_lot')%></h1>
 <%if @bids.empty?%>
-    <span class='textMessage'>Faça um lance e aguarde o resultado</span>
+    <span class='textMessage'><%=I18n.translate('message.wait_for_results')%></span>
 <%else%>
     <section class='lotResultsContainer'>
-        <%Lot.approved.each do |lot|%>
+        <%@lots.each do |lot|%>
             <div class='resultContainer'>
             <%if lot.bids.last.user == current_user%>
-                <h2>Parabéns! Você venceu o lote <%=lot.code%>.</h2>
-                <span>Lance Vencedor: <%=lot.money_format(lot.last_bid)%></span>
+                <h2><%=I18n.translate('message.congratulations')%> <%=lot.code%>.</h2>
+                <span><%=I18n.translate('message.winner_bid')%>: <%=lot.money_format(lot.last_bid)%></span>
                 <div class='itemsList'>
-                    <h3>Itens</h3>
+                    <h3><%= ItemModel.model_name.human(count: 2)%></h3>
                     <ul>
                         <%lot.item_models.each do |item|%>
                             <li><%=link_to item.name_format, item %></li>
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             <%elsif @bids.include? lot.id%>
-                <span class='textMessage'>Não foi dessa vez, o lote <%=lot.code %> foi arrematado por outro usuário.</span>
+                <span class='textMessage'><%=I18n.translate('message.lost_lot')%> <%=lot.code %> <%=I18n.translate('message.other_user_won')%>.</span>
             <%end%>
             </div>
         <%end%>

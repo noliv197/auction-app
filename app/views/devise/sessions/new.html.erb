@@ -1,4 +1,4 @@
-<h1 class='textTitle'>Log in</h1 class='textTitle'>
+<h1 class='textTitle'><%=I18n.translate('devise.shared.links.sign_in')%></h1 class='textTitle'>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="inputContainer">
@@ -19,7 +19,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in", :class => 'btnSubmit' %>
+    <%= f.submit I18n.translate('buttons.login'), :class => 'btnSubmit' %>
   </div>
 <% end %>
 

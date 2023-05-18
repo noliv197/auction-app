@@ -1,14 +1,14 @@
 <div class='lotsContainer'>
     <section id='toClose' class='lotContainer'>
-        <h2 class='lotContainerTitle'>Lotes para Encerrar</h2>
+        <h2 class='lotContainerTitle'><%=I18n.translate('title.lot_to_close')%></h2>
         <%if @to_close_lots.empty?%>
-            <span>Nenhum lote para encerrar</span>
+            <span><%=I18n.translate('message.no_lot_to_close')%></span>
         <%else%>
             <div class='lotsLinksContainer'>
                 <%@to_close_lots.each do |lot|%>
                     <%=tag.div id: lot.code do%>
-                        <p><%= "Lote #{lot.code}"%></p>
-                        <%=button_to "Encerrar", closed_lot_path(lot), :class => 'btn'%>
+                        <p><%= Lot.model_name.human(count: 1)%> <%= lot.code%></p>
+                        <%=button_to I18n.translate('buttons.close'), closed_lot_path(lot), :class => 'btn'%>
                     <%end%>
                 <%end%>
             <div>
@@ -16,15 +16,15 @@
     </section>
 
     <section id='toCancel' class='lotContainer'>
-        <h2 class='lotContainerTitle'>Lotes para Cancelar</h2>
+        <h2 class='lotContainerTitle'><%=I18n.translate('title.lot_to_cancel')%></h2>
         <%if @to_cancel_lots.empty?%>
-            <span>Nenhum lote para cancelar</span>
+            <span><%=I18n.translate('message.no_lot_to_cancel')%></span>
         <%else%>
             <div class='lotsLinksContainer'>
                 <%@to_cancel_lots.each do |lot|%>
                     <%=tag.div id: lot.code do%>
-                        <p><%= "Lote #{lot.code}"%></p>
-                        <%=button_to "Cancelar", canceled_lot_path(lot), :class => 'btn'%>
+                        <p><%= Lot.model_name.human(count: 1)%> <%= lot.code%></p>
+                        <%=button_to I18n.translate('buttons.cancel'), canceled_lot_path(lot), :class => 'btn'%>
                     <%end%>
                 <%end%>
             </div>

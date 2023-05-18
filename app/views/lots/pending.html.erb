@@ -1,14 +1,14 @@
-<h1 class='textTitle'>Lotes Aguardando Aprovação</h1>
+<h1 class='textTitle'><%=I18n.translate('title.pending_lot')%></h1>
 <section class='pendingLotsContainer'>
     <%if @lots.empty?%>
-        <span>Nenhum lote aguardando aprovação<span>
+        <span><%=I18n.translate('message.no_lot_pending')%><span>
     <%else%>
         <%@lots.each do |lot|%>
             <%=tag.div id: lot.code, :class => 'pendingLotContainer' do%>
                 <%=link_to lot do%>
                     <h2><%= Lot.model_name.human(count: 1)%> <%=lot.code%></h2>
                 <%end%>
-                <%= button_to 'Aprovar', approved_lot_path(lot), :class => 'btn'%>
+                <%= button_to I18n.translate('buttons.approve'), approved_lot_path(lot), :class => 'btn'%>
                 <span class='textDescription'>
                     <%=Lot.human_attribute_name('start_date')%>: <%=I18n.localize(lot.start_date)%>
                 </span>

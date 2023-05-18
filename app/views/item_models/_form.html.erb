@@ -7,7 +7,7 @@
         <%=f.label :description%>
         <%=f.text_field :description%>
     </div>
-        <div class='inputContainer'>
+    <div class='inputContainer'>
         <%=f.label :category%>
         <%=f.text_field :category%>
     </div>
@@ -33,5 +33,5 @@
             <%=f.number_field :depth%>
         </div>
     </div>
-    <%=f.submit 'Salvar', :class => 'btnSubmit'%>
+    <%=f.submit I18n.translate('buttons.save'), :class => 'btnSubmit'%>
 <%end%>

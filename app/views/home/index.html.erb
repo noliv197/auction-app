@@ -1,25 +1,25 @@
 <div class='lotsContainer'>
     <section id='inProgress' class='lotContainer'>
-        <h2 class='lotContainerTitle'>Lotes em andamento</h2>
+        <h2 class='lotContainerTitle'><%=I18n.translate('title.lot_on_going')%></h2>
         <%if @in_progress_lot.empty?%>
-            <span>Nenhum lote em progresso</span>
+            <span><%=I18n.translate('message.no_lot_on_going')%></span>
         <%else%>
             <div class='lotsLinksContainer'>
                 <%@in_progress_lot.each do |lot|%>
-                    <%=link_to "Lote #{lot.code}", lot%>
+                    <%=link_to "#{Lot.model_name.human(count: 1)} #{lot.code}", lot%>
                 <%end%>
             <div>
         <%end%>
     </section>
 
     <section id='future' class='lotContainer'>
-        <h2 class='lotContainerTitle'>Lotes Futuros</h2>
+        <h2 class='lotContainerTitle'><%=I18n.translate('title.lot_future')%></h2>
         <%if @future_lot.empty?%>
-            <span>Nenhum lote futuro</span>
+            <span><%=I18n.translate('message.no_lot_future')%></span>
         <%else%>
             <div class='lotsLinksContainer'>
                 <%@future_lot.each do |lot|%>
-                    <p><%= "Lote #{lot.code}"%></p>
+                    <p><%= Lot.model_name.human(count: 1)%> <%= lot.code%></p>
                 <%end%>
             </div>
         <%end%>

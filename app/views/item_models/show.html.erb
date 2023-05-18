@@ -7,7 +7,7 @@
         <%if @item_model.image.attached?%>
             <%=image_tag @item_model.image, alt: @item_model.name%>
         <%else%>
-            <%=image_tag "no_image_available.jpg", alt: 'Nenhuma imagem fornecida'%>
+            <%=image_tag "no_image_available.jpg", alt: I18n.translate('alt.no_image')%>
         <%end%>
     </div>
     <%=render 'item_description'%>

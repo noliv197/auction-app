@@ -1,7 +1,7 @@
-<h1 class='textTitle'>Novo Lote</h1>
+<h1 class='textTitle'><%=I18n.translate('title.new_lot')%></h1>
 <%if @lot.errors.any?%>
     <div class='errorsContainer'>
-        <span>Verifique os erros abaixo:</span>
+        <span><%=I18n.translate('message.verify_errors')%>:</span>
         <ul>
             <%@lot.errors.full_messages.each do |msg| %>
                 <li><%=msg%></li>
