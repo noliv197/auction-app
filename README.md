@@ -1,5 +1,6 @@
 # Leilão de Estoque
-<img src="http://img.shields.io/static/v1?label=Desenvolvimento&message=Em%20Desenvolvimento&color=blue&style=for-the-badge"/>
+<img src="http://img.shields.io/static/v1?label=Desenvolvimento&message=Finalizado&color=GREEN&style=for-the-badge"/>
+<img src="http://img.shields.io/static/v1?label=Conteudo%20Adicional&message=Nao%20Inicializado&color=red&style=for-the-badge"/>
 <img src="http://img.shields.io/static/v1?label=Code%20Review&message=Nao%20Inicializado&color=red&style=for-the-badge"/>
 
 ## Sumário
@@ -39,104 +40,186 @@ Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servi
 
 ## Testes
 ### Usuário
-* Modelo
-    - testa se campos estão vazios:
-        - email
-        - senha
-        - cpf
-    - testa se campos tem um único registro
-        - email
-        - cpf
-    - testa se `senha` tem no mínimo 6 caracteres
-    - testa se `cpf` é considerado válido
-    - testa se as credenciais certas foram 
+<details>
+    <summary>Modelo</summary>
+    <ol>
+        <li>
+            <p>testa se campos estão vazios</p>
+            <ul>
+                <li>email</li>
+                <li>senha</li>
+                <li>cpf</li>
+            </ul>
+        </li>
+        <li>
+            <p>testa se campos tem um único registro</p>
+            <ul>
+                <li>email</li>
+                <li>cpf</li>
+            </ul>
+        </li>
+        <li><p> testa se `senha` tem no mínimo 6 caracteres</p></li>
+        <li><p> testa se `cpf` é considerado válido</p></li>
+        <li><p> testa se as credenciais certas foram atribuidas</p></li>
+    </ol>
+</details>
 
-* Visualização do Usuário
-    - Cadastro de novo usuário com
-        - email
-        - senha
-        - cpf
-    - Login de cliente
-        - vê navegação do cliente
-    - Login de administrador
-        - vê navegação do adminsitrador
-    - Logout de usuário
+<details>
+    <summary>Visualização do Usuário</summary>
+    <ol>
+        <li>
+            <p>Cadastro de novo usuário com</p>
+            <ul>    
+                <li>email</li>
+                <li>senha</li>
+                <li>cpf</li>
+            </ul>
+        </li>
+        <li>
+            <p>Login de cliente</p>
+            <ul>
+                <li>vê navegação do cliente</li>
+            </ul>
+        </li>
+        <li>
+            <p>Login de administrador</p>
+            <ul>
+                <li>vê navegação do adminsitrador</li>
+            </ul>
+        </li>
+        <li><p> Logout de usuário </p></li>
+    </ol>
+</details>
 
 ### Lotes
-* Modelo
-    - testa se campos estão vazios: 
-        - código
-        - data de inicio
-        - data limite
-        - lance minimo
-        - diferença entre lances
-    - testa se `lance minimo` é maior que 0 e se a `diferença mínima entre lances` é maior que 1
-    - testa se código é único e se ele tem 3 letras e 6 números
-    - testa se data inicio não está no passado
-    - testa se data limite não é anterior a data de inicio
+<details>
+    <summary>Modelo</summary>
+    <ol>
+        <li>
+            <p>testa se campos estão vazios:</p>
+            <ul>
+                <li>código</li>
+                <li>data de inicio</li>
+                <li>data limite</li>
+                <li>lance minimo</li>
+                <li>diferença entre lances</li>
+            </ul>
+        </li>
+        <li>testa se `lance minimo` é maior que 0 e se a `diferença mínima entre lances` é maior que 1</li>
+        <li>testa se código é único e se ele tem 3 letras e 6 números</li>
+        <li>testa se data inicio não está no passado</li>
+        <li>testa se data limite não é anterior a data de inicio</li>
+    </ol>
+</details>   
 
-* Visualização do Usuário
-    - Lotes em andamento e futuros na página inicial
-    - Ao clicar no link de um lote, vê detalhes do lote e itens
-* Visualização do Administrador   
-    - Cadastro de um novo lote, fornecendo:
-        - código
-        - data de inicio
-        - data limite
-        - lance mínimo
-        - diferença mínima entre lances
-    - Edição de lotes com status pendente
-    - Adição e remoção de itens à lotes
-    - Aprovação de lotes
-    - Finalizar/Cancelar lotes
-* Visualização do Cliente
-    - vê se ganhou um lote finalizado que fez lance
-    - vê se perdeu um lote finalizado que fez lance
+<details>
+    <summary>Visualização do Usuário</summary>
+    <ol>
+        <li>Lotes em andamento e futuros na página inicial</li>
+        <li>Ao clicar no link de um lote, vê detalhes do lote e itens</li>
+    </ol>
+</details>
 
+<details>
+    <summary>Visualização do Administrador</summary>
+    <ol>
+        <li>
+            <p>Cadastro de um novo lote, fornecendo:</p>
+            <ul>
+                <li>código</li>
+                <li>data de inicio</li>
+                <li>data limite</li>
+                <li>lance minimo</li>
+                <li>diferença entre lances</li>
+            </ul>
+        </li>
+        <li>Edição de lotes com status pendente</li>
+        <li>Adição e remoção de itens à lotes</li>
+        <li>Aprovação de lotes</li>
+        <li>Finalizar/Cancelar lotes</li>
+    </ol>
+</details>
+
+<details>
+    <summary>Visualização do Cliente</summary>
+    <ol>
+        <li>vê se ganhou um lote finalizado que fez lance</li>
+        <li>vê se perdeu um lote finalizado que fez lance</li>
+    </ol>
+</details>
+   
 ### Itens
-* Modelo
-    - testa se campos estão vazios: 
-        - nome
-        - descrição
-        - imagem
-        - peso
-        - altura
-        - largura
-        - profundidade
-        - categoria
-    - testa se `peso` , `altura`, `largura`, `profundidade` é maior que 0
-    - testa se código é único e se não é alterado após mudanças no objeto
+<details>
+    <summary>Modelo</summary>
+    <ol>
+        <li>
+            <p>testa se campos estão vazios:</p>
+            <ul>
+                <li>nome</li>
+                <li>descrição</li>
+                <li>imagem</li>
+                <li>peso</li>
+                <li>altura</li>
+                <li>largura</li>
+                <li>profundidade</li>
+                <li>categoria</li>
+            </ul>
+        </li>
+        <li>testa se `peso` , `altura`, `largura`, `profundidade` é maior que 0</li>
+        <li>testa se código é único e se não é alterado após mudanças no objeto</li>
+    </ol>
+</details> 
 
-* Visualização do Administrador
-    - Cadastro de um novo item com 
-        - nome
-        - descrição
-        - categoria
-        - imagem
-        - peso
-        - altura
-        - largura
-        - profundidade
-    - Edição de itens com status disponível
+<details>
+    <summary>Visualização do Administrador</summary>
+    <ol>
+        <li>
+            <p>Cadastro de um novo item com:</p>
+            <ul>
+                <li>nome</li>
+                <li>descrição</li>
+                <li>imagem</li>
+                <li>peso</li>
+                <li>altura</li>
+                <li>largura</li>
+                <li>profundidade</li>
+                <li>categoria</li>
+            </ul>
+        </li>
+        <li>Edição de itens com status disponível</li>
+    </ol>
+</details> 
 
 ### Associação entre item e lote
-* Modelo
-    - testa se o item só está associado a um lote
+<details>
+    <summary>Modelo</summary>
+    <ol>
+        <li>testa se o item só está associado a um lote</li>
+    </ol>
+</details>
 
 ### Lances
-* Modelo
-    - teste se valor do lance está em branco
-    - testa se só clientes podem fazer o lance
-    - testa se lance é maior ou igual ao lance mínimo
-    - testa se o cliente não está fazendo vários lances seguidos
-    - testa se lance é menor que a diferença entre lances
-    - testa se o lance está sendo feito em lotes encerrados/cancelados
-    - testa se o lance está sendo feito para um lote expirado
+<details>
+    <summary>Modelo</summary>
+    <ol>
+        <li>teste se valor do lance está em branco</li>
+        <li>testa se só clientes podem fazer o lance</li>
+        <li>testa se lance é maior ou igual ao lance mínimo</li>
+        <li>testa se o cliente não está fazendo vários lances seguidos</li>
+        <li>testa se lance é menor que a diferença entre lances</li>
+        <li>testa se o lance está sendo feito em lotes encerrados/cancelados</li>
+        <li>testa se o lance está sendo feito para um lote expirado</li>
+    </ol>
+</details>
 
-* Visualização do Cliente
-    - formulário só está disponível para usuários autenticados
-    - contabilização do primeiro lance é feito com sucesso
-    - contabilização do segundo lance é feito com sucesso
+<details>
+    <summary>Visualização do Cliente</summary>
+    <ol>
+        <li>formulário só está disponível para usuários autenticados</li>
+        <li>contabilização do primeiro lance é feito com sucesso</li>
+        <li>contabilização do segundo lance é feito com sucesso</li>
+    </ol>
+</details>
 
 ## Configurações
 ### Como Rodar a Aplicação
