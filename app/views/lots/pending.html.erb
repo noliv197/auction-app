@@ -8,7 +8,7 @@
                 <%=link_to lot do%>
                     <h2><%= Lot.model_name.human(count: 1)%> <%=lot.code%></h2>
                 <%end%>
-                <%= button_to 'Aprovar', approved_lot_path(lot)%>
+                <%= button_to 'Aprovar', approved_lot_path(lot), :class => 'btn'%>
                 <span class='textDescription'>
                     <%=Lot.human_attribute_name('start_date')%>: <%=I18n.localize(lot.start_date)%>
                 </span>
@@ -19,19 +19,19 @@
                     <%=Lot.human_attribute_name('minimum_bid')%>: <%=lot.money_format(lot.minimum_bid)%>
                 </span>
                 <span class='textDescription'>
-                    <%=Lot.human_attribute_name('bids_difference')%>: <%=lot.bids_difference%>
+                    <%=Lot.human_attribute_name('bids_difference')%>: <%=lot.money_format(lot.bids_difference)%>
                 </span>
                 <span class='textDescription'>
                     <%=Lot.human_attribute_name('created_by_id')%>: <%=lot.created_by.email%>
                 </span>
                 <h2>Itens</h2>
-                <dl>
                     <%lot.item_models.each do |item|%>
-                        <dt><%=item.name_format%></dt>
-                        <dd><%=ItemModel.human_attribute_name('description')%>: <%=item.description%></dd>
-                        <dd><%=I18n.translate(:dimension)%>: <%=item.dimension%></dd>
+                        <dl class='list'>
+                            <dt class='listTitle'><%=item.name_format%></dt>
+                            <dd class='listDescription'><%=ItemModel.human_attribute_name('description')%>: <%=item.description%></dd>
+                            <dd class='listDescription'><%=I18n.translate(:dimension)%>: <%=item.dimension%></dd>
+                        </dl>
                     <%end%>
-                </dl>
             <%end%>
         <%end%>
     <%end%>

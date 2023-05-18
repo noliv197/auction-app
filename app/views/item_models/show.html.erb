@@ -2,7 +2,7 @@
     <div>
         <h1 class='textTitle'><%= ItemModel.human_attribute_name('code')%>: <%=@item_model.code%></h1>
         <%if user_signed_in? && current_user.admin? && @item_model.available?%>
-            <%= link_to 'Editar item', edit_item_model_path(@item_model)%>
+            <%= link_to 'Editar item', edit_item_model_path(@item_model), :class => 'btn'%>
         <%end%>
         <%if @item_model.image.attached?%>
             <%=image_tag @item_model.image, alt: @item_model.name%>

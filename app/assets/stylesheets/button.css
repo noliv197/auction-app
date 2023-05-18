@@ -1,0 +1,35 @@
+.btn{
+    background-color: #091629;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: .5rem;
+    cursor: pointer;
+    margin: .25rem 0;
+    display: inline-block;
+}
+
+.btnSubmit{
+    background-color: #743888;
+    color: #ffffff;
+    padding: .5rem;
+    font-size: 1.2em;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    width: 50%;
+    margin-top: 1rem;
+}
+
+.btnCentered{
+    text-align: center;
+    display: block;
+    width: 15%;
+    margin: 0 auto 1rem auto;
+}
+
+.btn,
+.btnSubmit{
+    opacity: .9;
+    cursor: pointer;
+}

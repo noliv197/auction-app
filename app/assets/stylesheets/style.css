@@ -40,3 +40,18 @@ li{
     font-size: 1.2em;
     margin: .25rem 0;
 }
+
+.textMessage{
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.containerCentered{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerCentered span{
+    margin: 1rem 0;
+}

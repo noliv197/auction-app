@@ -3,7 +3,36 @@
     margin: 0 auto;
     text-align: center;
     display: flex;
+    align-items: center;
     flex-direction: column;
+}
+
+.lotsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 2rem auto;
+}
+
+.lotContainer{
+    width: 45%;
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.lotContainerTitle{
+    text-align: center;
+    margin: 0 0 .75rem 0;
+}
+
+.lotsLinksContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    text-align: center;
 }
 
 .pendingLotsContainer{
@@ -25,11 +54,28 @@
     display: block;
 }
 
-.pendingLotContainer button {
-    background-color: #091629;
-    color: #ffffff;
-    border: none;
+.lotResultsContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.resultContainer{
+    border: 2px solid #ffffff;
     border-radius: 4px;
     padding: .5rem;
-    cursor: pointer;
+}
+
+.itemsList h3{
+    margin-top: .5rem;
+}
+
+.itemsList ul{
+    margin: .25rem 0;
+}
+
+.itemsList li{
+    padding-left: .7rem;
 }

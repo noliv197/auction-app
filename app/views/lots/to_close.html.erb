@@ -8,7 +8,7 @@
                 <%@to_close_lots.each do |lot|%>
                     <%=tag.div id: lot.code do%>
                         <p><%= "Lote #{lot.code}"%></p>
-                        <%=button_to "Encerrar", closed_lot_path(lot)%>
+                        <%=button_to "Encerrar", closed_lot_path(lot), :class => 'btn'%>
                     <%end%>
                 <%end%>
             <div>
@@ -24,7 +24,7 @@
                 <%@to_cancel_lots.each do |lot|%>
                     <%=tag.div id: lot.code do%>
                         <p><%= "Lote #{lot.code}"%></p>
-                        <%=button_to "Cancelar", canceled_lot_path(lot)%>
+                        <%=button_to "Cancelar", canceled_lot_path(lot), :class => 'btn'%>
                     <%end%>
                 <%end%>
             </div>

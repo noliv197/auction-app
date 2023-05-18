@@ -9,14 +9,3 @@
 .menuLinksContainer a:not(:first-child){
     margin: 0 .5rem;
 }
-
-.menuContainer button,
-.menuContainer a {
-    background-color: #091629;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    padding: .5rem;
-    cursor: pointer;
-    display: block;
-}

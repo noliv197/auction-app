@@ -1,21 +1,25 @@
 <h1 class='textTitle'>Lotes Vencidos</h1>
-<section>
-    <%@lots.each do |lot|%>
-        <%if lot.bids.last.user == current_user%>
-            <div>
+<%if @bids.empty?%>
+    <span class='textMessage'>Faça um lance e aguarde o resultado</span>
+<%else%>
+    <section class='lotResultsContainer'>
+        <%Lot.approved.each do |lot|%>
+            <div class='resultContainer'>
+            <%if lot.bids.last.user == current_user%>
                 <h2>Parabéns! Você venceu o lote <%=lot.code%>.</h2>
                 <span>Lance Vencedor: <%=lot.money_format(lot.last_bid)%></span>
-        </div>
-        <div>
-            <h3>Itens</h3>
-            <ul>
-                <%lot.item_models.each do |item|%>
-                    <li><%=link_to item.name_format, item %></li>
-                <%end%>
-            </ul>
-        </div>
-        <%elsif @bids.include? lot.id%>
-            <span>Não foi dessa vez, o lote <%=lot.code %> foi arrematado por outro usuário.</span>
+                <div class='itemsList'>
+                    <h3>Itens</h3>
+                    <ul>
+                        <%lot.item_models.each do |item|%>
+                            <li><%=link_to item.name_format, item %></li>
+                        <%end%>
+                    </ul>
+                </div>
+            <%elsif @bids.include? lot.id%>
+                <span class='textMessage'>Não foi dessa vez, o lote <%=lot.code %> foi arrematado por outro usuário.</span>
+            <%end%>
+            </div>
         <%end%>
-    <%end%>
-</section>
+    </section>
+<%end%>

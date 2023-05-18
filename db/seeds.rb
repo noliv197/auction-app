@@ -33,3 +33,6 @@ third_item = ItemModel.create!(
 LotItem.create!(lot: first_lot, item_model:first_item)
 LotItem.create!(lot: first_lot, item_model:third_item)
 LotItem.create!(lot: second_lot, item_model:second_item)
+first_item.unavailable!
+second_item.unavailable!
+third_item.unavailable!
