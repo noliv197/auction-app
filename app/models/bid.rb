@@ -7,6 +7,8 @@ class Bid < ApplicationRecord
   validate :check_client
   validate :check_value
   validate :check_bid_difference
+  validate :check_lot_availability
+  validate :check_lot_limit
 
   private
   def verify_credentials
@@ -27,6 +29,16 @@ class Bid < ApplicationRecord
   def check_bid_difference
     if self.value.present? && self.value > self.lot.minimum_bid && self.lot.last_bid.present? && self.value < (self.lot.last_bid + self.lot.bids_difference)
       self.errors.add(:value,"é menor que diferença entre lances")
+    end
+  end
+  def check_lot_availability
+    if  self.lot.canceled? || self.lot.closed?
+      self.errors.add(:lot_id,"não pode mais receber lances")
+    end
+  end
+  def check_lot_limit
+    if  self.lot.limit_date <= Date.today
+      self.errors.add(:lot_id,"não pode mais receber lances")
     end
   end
 end

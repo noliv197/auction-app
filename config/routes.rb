@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :lots, only:[:show,:new,:create,:edit,:update] do
     resources :lot_items, only:[:new,:create,:destroy] 
     resources :bids, only:[:create,:new]
-    get 'pending', on: :collection
     get 'to_close', on: :collection
+    get 'result', on: :collection
+    get 'pending', on: :collection
     post 'approved', on: :member
     post 'canceled', on: :member
     post 'closed', on: :member

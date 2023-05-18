@@ -80,5 +80,42 @@ RSpec.describe Bid, type: :model do
 
       expect(second_bid.valid?).to eq false
     end
+    it 'para lotes encerrados' do
+      admin = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '14538220620')
+      client = User.create!(email:'natalia@email.com', password:'12345678', registration_number: '87691734000')
+      lot = Lot.create!(
+        code:'ABC123456',start_date: 1.day.from_now,limit_date: 3.days.from_now,
+        minimum_bid: 5, bids_difference: 10, status: 'closed', created_by: admin
+      )
+      bid = Bid.new(user: client, lot: lot, value: 25)
+
+      expect(bid.valid?).to eq false
+      expect(bid.errors.full_messages[0]).to eq 'Lote não pode mais receber lances'
+    end
+    it 'para lotes cancelados' do
+      admin = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '14538220620')
+      client = User.create!(email:'natalia@email.com', password:'12345678', registration_number: '87691734000')
+      lot = Lot.create!(
+        code:'ABC123456',start_date: 1.day.from_now,limit_date: 3.days.from_now,
+        minimum_bid: 5, bids_difference: 10, status: 'canceled', created_by: admin
+      )
+      bid = Bid.new(user: client, lot: lot, value: 25)
+
+      expect(bid.valid?).to eq false
+      expect(bid.errors.full_messages[0]).to eq 'Lote não pode mais receber lances'
+    end
+    it 'para lotes expirados' do
+      admin = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '14538220620')
+      client = User.create!(email:'natalia@email.com', password:'12345678', registration_number: '87691734000')
+      lot = Lot.create!(
+        code:'ABC123456',start_date: 1.day.from_now,limit_date: 3.days.from_now,
+        minimum_bid: 5, bids_difference: 10, status: 'approved', created_by: admin
+      )
+      travel 4.days
+      bid = Bid.new(user: client, lot: lot, value: 25)
+
+      expect(bid.valid?).to eq false
+      expect(bid.errors.full_messages[0]).to eq 'Lote não pode mais receber lances'
+    end
   end
 end

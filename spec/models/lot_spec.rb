@@ -71,7 +71,9 @@ RSpec.describe Lot, type: :model do
           code:'ABC123456',start_date: 2.days.ago,limit_date: 3.days.from_now,
           minimum_bid: 5, bids_difference: 10, status: 'pending', created_by: user
         ) 
+
         expect(lot.valid?).to eq false
+        expect(lot.errors.full_messages[0]).to eq "Data de Início deve ser maior ou igual a #{Date.today}"
       end
       it 'data limite não pode ser igual a data de inicio' do
         user = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '87691734000')

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :creators, :class_name => 'Lot', :foreign_key => 'created_by_id'
   has_many :approvers, :class_name => 'Lot', :foreign_key => 'approved_by_id'
+  has_many :bids
 
   before_validation :set_credentials, on: :create
   devise :database_authenticatable, :registerable,

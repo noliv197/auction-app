@@ -1,11 +1,16 @@
 class LotsController < ApplicationController
-    before_action :authenticate_user!, only:[:new,:pending,:edit,:create,:to_close]
-    before_action :check_credentials, only:[:new,:create,:pending,:approved,:edit,:create,:to_close,:canceled,:closed]
+    before_action :authenticate_user!, only:[:new,:pending,:edit,:create,:to_close,:result]
+    before_action :check_admin_credentials, only:[:new,:create,:pending,:approved,:edit,:create,:to_close,:canceled,:closed]
+    before_action :check_client_credentials, only:[:result]
     def show
         @lot = Lot.find(params[:id])
     end
     def new
         @lot = Lot.new
+    end
+    def result
+        @lots = Lot.closed
+        @bids = current_user.bids.map {|bid| bid.lot_id}
     end
     def pending
         @lots = Lot.pending
@@ -27,12 +32,12 @@ class LotsController < ApplicationController
         end
     end
     def to_close
-        @to_close_lots = Lot.where("limit_date > ? AND status = ? AND last_bid IS NOT NULL",Date.today,1)
-        @to_cancel_lots = Lot.where("limit_date > ? AND status = ? AND last_bid IS NULL",Date.today,1)
+        @to_close_lots = Lot.where("limit_date <= ? AND status = ? AND last_bid IS NOT NULL",Date.today,1)
+        @to_cancel_lots = Lot.where("limit_date <= ? AND status = ? AND last_bid IS NULL",Date.today,1)
     end
     def canceled
-        @to_close_lots = Lot.where("limit_date > ? AND status = ? AND last_bid IS NOT NULL",Date.today,1)
-        @to_cancel_lots = Lot.where("limit_date > ? AND status = ? AND last_bid IS NULL",Date.today,1)
+        @to_close_lots = Lot.where("limit_date <= ? AND status = ? AND last_bid IS NOT NULL",Date.today,1)
+        @to_cancel_lots = Lot.where("limit_date <= ? AND status = ? AND last_bid IS NULL",Date.today,1)
         @lot = Lot.find(params[:id])
  
         @lot.canceled!
@@ -45,14 +50,13 @@ class LotsController < ApplicationController
         render :to_close
     end
     def closed
-        @to_close_lots = Lot.where("limit_date > ? AND status = ? AND last_bid IS NOT NULL",Date.today,1)
-        @to_cancel_lots = Lot.where("limit_date > ? AND status = ? AND last_bid IS NULL",Date.today,1)
+        @to_close_lots = Lot.where("limit_date <= ? AND status = ? AND last_bid IS NOT NULL",Date.today,1)
+        @to_cancel_lots = Lot.where("limit_date <= ? AND status = ? AND last_bid IS NULL",Date.today,1)
         @lot = Lot.find(params[:id])
  
         @lot.closed!
         @lot.lot_items.each do |i|
             i.item_model.sold!
-            i.destroy
         end
         flash.now[:notice] = 'Lote Encerrado com Sucesso'
         render :to_close
@@ -86,8 +90,13 @@ class LotsController < ApplicationController
     end
 
     private
-    def check_credentials
+    def check_admin_credentials
         if current_user.client?
+            return redirect_to root_path, notice: 'Você não tem permissão para executar essa ação'
+        end
+    end
+    def check_client_credentials
+        if current_user.admin?
             return redirect_to root_path, notice: 'Você não tem permissão para executar essa ação'
         end
     end
