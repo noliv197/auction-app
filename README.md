@@ -16,7 +16,52 @@ Após o [Sistema de Galpões](https://github.com/noliv197/warehouse-app), o clie
 Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servirá para conectar o público em geral com o estoque de itens abandonados, permitindo que estes itens sejam comercializados com preços atrativos e que, ao mesmo tempo, os galpões tenham seus espaços melhor aproveitados. O formato escolhido pelo nosso cliente é o de leilão de itens.
 
 ## Funcionalidades
+1. CRUD 
+    * criação, edição e visualização de lotes
+    * criação, edição e visualização de items
+    * criação e visualização de lances
+    * criação de usuários
+2. Autenticação via Login
+3. Autorização via credenciais
+    * visitantes: só tem acesso a visualização de lotes aprovados em andamento
+    * clientes: 
+        * podem visualizar lotes aprovados em andamento
+        * podem fazer um lance em lotes aprovados em andamento
+        * tem acesso ao resultado de lotes encerrados que ganhou
+    * administradores
+        * podem criar lotes e editá-los se tiverem com status aguradando aprovação
+        * podem criar items e editá-los se tiverem com status disponível
+        * podem adicionar e/ou deletar itens de lotes aguradando aprovação
+        * podem aprovar lotes que tenham pelo menos 1 item, desde que o tenhma criado
+        * podem encerrar e cancelar lotes expirados
+4. Adição e remoção de itens em lotes
+5. Lances feitos apenas por clientes
+
 ## Testes
+### Usuário
+* Modelo
+    - testa se campos estão vazios:
+        - email
+        - senha
+        - cpf
+    - testa se campos tem um único registro
+        - email
+        - cpf
+    - testa se `senha` tem no mínimo 6 caracteres
+    - testa se `cpf` é considerado válido
+    - testa se as credenciais certas foram 
+
+* Visualização do Usuário
+    - Cadastro de novo usuário com
+        - email
+        - senha
+        - cpf
+    - Login de cliente
+        - vê navegação do cliente
+    - Login de administrador
+        - vê navegação do adminsitrador
+    - Logout de usuário
+
 ### Lotes
 * Modelo
     - testa se campos estão vazios: 
@@ -33,13 +78,22 @@ Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servi
 * Visualização do Usuário
     - Lotes em andamento e futuros na página inicial
     - Ao clicar no link de um lote, vê detalhes do lote e itens
+* Visualização do Administrador   
     - Cadastro de um novo lote, fornecendo:
         - código
         - data de inicio
         - data limite
         - lance mínimo
         - diferença mínima entre lances
-### Modelo de Itens
+    - Edição de lotes com status pendente
+    - Adição e remoção de itens à lotes
+    - Aprovação de lotes
+    - Finalizar/Cancelar lotes
+* Visualização do Cliente
+    - vê se ganhou um lote finalizado que fez lance
+    - vê se perdeu um lote finalizado que fez lance
+
+### Itens
 * Modelo
     - testa se campos estão vazios: 
         - nome
@@ -53,8 +107,8 @@ Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servi
     - testa se `peso` , `altura`, `largura`, `profundidade` é maior que 0
     - testa se código é único e se não é alterado após mudanças no objeto
 
-* Visualização do Usuário
-    - Cadastro de um novo item
+* Visualização do Administrador
+    - Cadastro de um novo item com 
         - nome
         - descrição
         - categoria
@@ -63,32 +117,26 @@ Neste projeto será desenvolvido uma aplicação web com Ruby on Rails que servi
         - altura
         - largura
         - profundidade
-### Usuário
-* Modelo
-    - testa se campos estão vazios:
-        - email
-        - senha
-        - cpf
-    - testa se campos tem um único registro
-        - email
-        - cpf
-    - testa se `senha` tem no mínimo 6 caracteres
-    - testa se `cpf` é considerado válido
+    - Edição de itens com status disponível
 
-* Visualização do Usuário
-    - Cadastro de novo usuário
-        - email
-        - senha
-        - cpf
-    - Login de cliente
-        - vê lotes disponiveis
-        - pode fazer lance
-        - vê resultados de lotes que fizeram lances
-    - Login de administrador
-        - vê e tem permissão para criar lotes
-        - vê e tem permissão para criar itens
-        - aprova lote
-        - adiciona/remove itens de um lote
+### Associação entre item e lote
+* Modelo
+    - testa se o item só está associado a um lote
+
+### Lances
+* Modelo
+    - teste se valor do lance está em branco
+    - testa se só clientes podem fazer o lance
+    - testa se lance é maior ou igual ao lance mínimo
+    - testa se o cliente não está fazendo vários lances seguidos
+    - testa se lance é menor que a diferença entre lances
+    - testa se o lance está sendo feito em lotes encerrados/cancelados
+    - testa se o lance está sendo feito para um lote expirado
+
+* Visualização do Cliente
+    - formulário só está disponível para usuários autenticados
+    - contabilização do primeiro lance é feito com sucesso
+    - contabilização do segundo lance é feito com sucesso
 
 ## Configurações
 ### Como Rodar a Aplicação

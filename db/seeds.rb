@@ -29,3 +29,7 @@ third_item = ItemModel.create!(
     name:'Sapato',description:'preto, tamanho 33',
     weight: 25, length: 10,width:5,depth:3,category:'Calçados'
 )
+
+LotItem.create!(lot: first_lot, item_model:first_item)
+LotItem.create!(lot: first_lot, item_model:third_item)
+LotItem.create!(lot: second_lot, item_model:second_item)

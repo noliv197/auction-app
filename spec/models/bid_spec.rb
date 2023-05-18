@@ -23,6 +23,7 @@ RSpec.describe Bid, type: :model do
       bid = Bid.new(user: client, lot: lot, value: '')
 
       expect(bid.valid?).to eq false
+      expect(bid.errors.full_messages[0]).to eq 'Lance não pode ficar em branco'
     end
     it 'para lance menor que lance mínimo do lote' do
       admin = User.create!(email:'natalia@leilaodogalpao.com.br', password:'12345678', registration_number: '14538220620')
@@ -111,11 +112,11 @@ RSpec.describe Bid, type: :model do
         code:'ABC123456',start_date: 1.day.from_now,limit_date: 3.days.from_now,
         minimum_bid: 5, bids_difference: 10, status: 'approved', created_by: admin
       )
-      travel 4.days
-      bid = Bid.new(user: client, lot: lot, value: 25)
-
-      expect(bid.valid?).to eq false
-      expect(bid.errors.full_messages[0]).to eq 'Lote não pode mais receber lances'
+      travel_to 4.days.from_now do
+        bid = Bid.new(user: client, lot: lot, value: 25)
+        expect(bid.valid?).to eq false
+        expect(bid.errors.full_messages[0]).to eq 'Lote não pode mais receber lances'
+      end
     end
   end
 end

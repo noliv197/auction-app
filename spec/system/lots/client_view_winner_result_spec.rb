@@ -31,6 +31,7 @@ describe 'Cliente vê resultados de seus lances' do
         lot_item = LotItem.create!(lot: first_lot, item_model: item)
         first_lot.approved!
         bid = Bid.create!(user: client, lot: first_lot, value: 6)
+        first_lot.update(last_bid: bid.value)
         first_lot.closed!
 
         login_as client
@@ -56,7 +57,9 @@ describe 'Cliente vê resultados de seus lances' do
         lot_item = LotItem.create!(lot: first_lot, item_model: item)
         first_lot.approved!
         first_bid = Bid.create!(user: first_client, lot: first_lot, value: 6)
+        first_lot.update(last_bid: first_bid.value)
         second_bid = Bid.create!(user: second_client, lot: first_lot, value: 30)
+        first_lot.update(last_bid: second_bid.value)
         first_lot.closed!
 
         login_as first_client

@@ -11,13 +11,14 @@ class Lot < ApplicationRecord
     presence: true
     validates :minimum_bid, numericality: { greater_than: 0 }
     validates :bids_difference, numericality: { greater_than: 1 }
-    validates :start_date, comparison: { greater_than_or_equal_to: Date.today}
+    validates :start_date, comparison: { greater_than_or_equal_to: Time.current.to_date}
     validates :limit_date, comparison: { greater_than: :start_date }
     validates :code, uniqueness: true
     validate :verify_code
 
     def money_format(number)
-        "R$ #{number},00"
+        convertion = sprintf('%.2f', number).sub('.',',')
+        "R$ #{convertion}"
     end
     
     private
@@ -25,7 +26,7 @@ class Lot < ApplicationRecord
     def verify_code
         code_validation_regex = /^[a-zA-Z]{3}[0-9]{6}$/
         if self.code.present? && Lot.find_by(code: self.code) == nil && !self.code.match?(code_validation_regex)
-            self.errors.add(:code," o código deve ter 3 letras e 6 números")
+            self.errors.add(:code,"deve ter 3 letras e 6 números")
         end
     end
 end

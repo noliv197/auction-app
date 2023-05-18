@@ -31,15 +31,15 @@ describe 'Administrador encerra lotes' do
         first_lot.approved!
         bid = Bid.create!(user: client, lot: first_lot, value: 6)
         first_lot.update(last_bid: bid.value)
-        travel 2.days
-
-        login_as creator_admin
-        visit root_path
-        click_on 'Lotes expirados'
-        within 'div#ABC123456' do
-            click_on 'Encerrar'
+        
+        travel_to 2.days.from_now do
+            login_as creator_admin
+            visit root_path
+            click_on 'Lotes expirados'
+            within 'div#ABC123456' do
+                click_on 'Encerrar'
+            end
         end
-
         expect(page).to have_content 'Lote Encerrado com Sucesso'
     end
     it 'com cancelamento' do
@@ -55,15 +55,14 @@ describe 'Administrador encerra lotes' do
         )
         lot_item = LotItem.create!(lot: first_lot, item_model: item)
         first_lot.approved!
-        travel 2.days
-
-        login_as creator_admin
-        visit root_path
-        click_on 'Lotes expirados'
-        within 'div#ABC123456' do
-            click_on 'Cancelar'
+        travel_to 2.days.from_now do
+            login_as creator_admin
+            visit root_path
+            click_on 'Lotes expirados'
+            within 'div#ABC123456' do
+                click_on 'Cancelar'
+            end
         end
-
         expect(page).to have_content 'Lote Cancelado com Sucesso'
     end
 end

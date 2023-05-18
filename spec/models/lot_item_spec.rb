@@ -21,6 +21,7 @@ RSpec.describe LotItem, type: :model do
             second_lot_item = LotItem.new(lot: second_lot, item_model: item)
 
             expect(second_lot_item.valid?).to eq false
+            expect(second_lot_item.errors.full_messages[0]).to eq 'Item model já está em uso'
         end
     end
 end
